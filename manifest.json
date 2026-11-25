@@ -1,0 +1,31 @@
+{
+  "name": "QUIZORA - Quiz For Students",
+  "short_name": "QUIZORA",
+  "description": "Aplikasi kuis interaktif untuk siswa SMP & SMK Kelas 7-12",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#7C3AED",
+  "background_color": "#F0F9FF",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
