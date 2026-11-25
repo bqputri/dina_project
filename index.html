@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#7C3AED">
-    <meta name="description" content="QUIZORA - Aplikasi kuis interaktif untuk siswa SMP & SMK Kelas 7-12">
+    <meta name="description" content="QUIZORA - Aplikasi kuis interaktif untuk siswa SMP, SMA & SMK Kelas 7-12">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="QUIZORA">
@@ -12,7 +12,7 @@
     <link rel="icon" type="image/svg+xml" href="icon.svg">
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <title>QUIZORA - Quiz For Students (SMP & SMK Kelas 7-12)</title>
+    <title>QUIZORA - Quiz For Students (SMP, SMA & SMK Kelas 7-12)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Plus Jakarta Sans & Fredoka for fun student vibe -->
@@ -201,7 +201,7 @@
                             SMP • Kelas 7
                         </span>
                     </div>
-                    <p class="text-xs text-slate-500 font-medium">Quiz For Students • SMP & SMK (Kelas 7–12)</p>
+                    <p class="text-xs text-slate-500 font-medium">Quiz For Students • SMP, SMA & SMK (Kelas 7–12)</p>
                 </div>
             </div>
 
@@ -222,6 +222,14 @@
                     </svg>
                     <span id="headerTotalScore" class="font-display font-bold text-sm sm:text-base text-purple-800">0 Poin</span>
                 </div>
+
+                <!-- Install / Download App Button -->
+                <button id="installAppBtn" onclick="installPWA()" class="flex items-center gap-1.5 bg-gradient-to-r from-purple-600 to-sky-500 hover:from-purple-700 hover:to-sky-600 text-white font-display font-bold text-xs sm:text-sm px-3 py-2 rounded-2xl shadow-sm transition" title="Download / Install Aplikasi QUIZORA">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
+                    </svg>
+                    <span>Download App</span>
+                </button>
 
                 <!-- Sound Effects Button -->
                 <button id="soundToggleBtn" onclick="app.toggleSound()" class="w-10 h-10 rounded-2xl bg-sky-100 hover:bg-sky-200 text-sky-700 border-2 border-sky-300 flex items-center justify-center transition" title="Suara Efek">
@@ -255,7 +263,7 @@
                         <div class="space-y-4 text-center md:text-left max-w-xl">
                             <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold border border-white/30">
                                 <span class="w-2.5 h-2.5 rounded-full bg-yellow-300 animate-ping"></span>
-                                <span id="heroGradeIndicator">Tingkat SMP (Kelas 7, 8, 9) & SMK (Kelas 10, 11, 12)</span>
+                                <span id="heroGradeIndicator">Tingkat SMP (7–9), SMA (10–12) & SMK (10–12)</span>
                             </div>
 
                             <h2 class="font-display font-bold text-2xl sm:text-4xl leading-tight">
@@ -355,7 +363,7 @@
                             <span class="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-display font-bold text-lg">🎓</span>
                             <div>
                                 <h3 class="font-display font-bold text-lg sm:text-xl text-slate-800">Pilih Jenjang & Tingkat Kelasmu</h3>
-                                <p class="text-xs text-slate-500">Soal otomatis disesuaikan dengan tingkat kelas SMP (7, 8, 9) atau SMK (10, 11, 12)</p>
+                                <p class="text-xs text-slate-500">Soal otomatis disesuaikan dengan tingkat kelas SMP (7, 8, 9), SMA (10, 11, 12), atau SMK (10, 11, 12)</p>
                             </div>
                         </div>
                         <span id="activeGradeSummaryPill" class="self-start sm:self-auto bg-gradient-to-r from-sky-500 to-purple-600 text-white font-display font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full shadow-sm">
@@ -363,29 +371,43 @@
                         </span>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                         <!-- SMP Group (Kelas 7, 8, 9) -->
                         <div class="bg-sky-50/70 rounded-2xl p-4 border-2 border-sky-200 space-y-3">
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between gap-2">
                                 <span class="font-display font-bold text-sm text-sky-900 flex items-center gap-1.5">
                                     <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
                                     Jenjang SMP (Sekolah Menengah Pertama)
                                 </span>
-                                <span class="text-[11px] font-bold bg-sky-200/80 text-sky-800 px-2.5 py-0.5 rounded-full">Kelas 7 – 9</span>
+                                <span class="text-[11px] font-bold bg-sky-200/80 text-sky-800 px-2.5 py-0.5 rounded-full whitespace-nowrap">Kelas 7 – 9</span>
                             </div>
                             <div class="grid grid-cols-3 gap-2.5" id="smpGradeButtons">
                                 <!-- Populated dynamically -->
                             </div>
                         </div>
 
+                        <!-- SMA Group (Kelas 10, 11, 12) -->
+                        <div class="bg-emerald-50/70 rounded-2xl p-4 border-2 border-emerald-200 space-y-3">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="font-display font-bold text-sm text-emerald-900 flex items-center gap-1.5">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                                    Jenjang SMA (Sekolah Menengah Atas)
+                                </span>
+                                <span class="text-[11px] font-bold bg-emerald-200/80 text-emerald-900 px-2.5 py-0.5 rounded-full whitespace-nowrap">Kelas 10 – 12</span>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2.5" id="smaGradeButtons">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
                         <!-- SMK Group (Kelas 10, 11, 12) -->
                         <div class="bg-purple-50/70 rounded-2xl p-4 border-2 border-purple-200 space-y-3">
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between gap-2">
                                 <span class="font-display font-bold text-sm text-purple-900 flex items-center gap-1.5">
                                     <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
                                     Jenjang SMK (Sekolah Menengah Kejuruan)
                                 </span>
-                                <span class="text-[11px] font-bold bg-purple-200/80 text-purple-900 px-2.5 py-0.5 rounded-full">Kelas 10 – 12</span>
+                                <span class="text-[11px] font-bold bg-purple-200/80 text-purple-900 px-2.5 py-0.5 rounded-full whitespace-nowrap">Kelas 10 – 12</span>
                             </div>
                             <div class="grid grid-cols-3 gap-2.5" id="smkGradeButtons">
                                 <!-- Populated dynamically -->
@@ -431,7 +453,7 @@
                         </div>
                         <div>
                             <h3 class="font-display font-bold text-slate-800 text-sm sm:text-base" id="completedSubjectsStatus">0/4 Mapel Selesai</h3>
-                            <p class="text-xs text-slate-500" id="allGradesCompletedText">Total seluruh kelas: 0/24 kuis</p>
+                            <p class="text-xs text-slate-500" id="allGradesCompletedText">Total seluruh kelas: 0/36 kuis</p>
                         </div>
                     </div>
                 </div>
@@ -729,7 +751,7 @@
 
         <!-- FOOTER -->
         <footer class="text-center py-4 text-xs sm:text-sm text-slate-500 font-medium">
-            <p>✨ <strong>QUIZORA</strong> — <em>Quiz For Students (SMP Kelas 7, 8, 9 & SMK Kelas 10, 11, 12)</em> ✨</p>
+            <p>✨ <strong>QUIZORA</strong> — <em>Quiz For Students (SMP Kelas 7–9, SMA Kelas 10–12 & SMK Kelas 10–12)</em> ✨</p>
         </footer>
     </div>
 
@@ -744,6 +766,9 @@
             { grade: '7', level: 'SMP', label: 'Kelas 7', fullName: 'SMP • Kelas 7', desc: 'Tingkat Dasar SMP' },
             { grade: '8', level: 'SMP', label: 'Kelas 8', fullName: 'SMP • Kelas 8', desc: 'Tingkat Menengah SMP' },
             { grade: '9', level: 'SMP', label: 'Kelas 9', fullName: 'SMP • Kelas 9', desc: 'Persiapan Kelulusan SMP' },
+            { grade: 'sma10', level: 'SMA', label: 'Kelas 10', fullName: 'SMA • Kelas 10', desc: 'Dasar Akademik SMA' },
+            { grade: 'sma11', level: 'SMA', label: 'Kelas 11', fullName: 'SMA • Kelas 11', desc: 'Pendalaman Materi SMA' },
+            { grade: 'sma12', level: 'SMA', label: 'Kelas 12', fullName: 'SMA • Kelas 12', desc: 'Persiapan UTBK & Ujian SMA' },
             { grade: '10', level: 'SMK', label: 'Kelas 10', fullName: 'SMK • Kelas 10', desc: 'Dasar Kejuruan SMK' },
             { grade: '11', level: 'SMK', label: 'Kelas 11', fullName: 'SMK • Kelas 11', desc: 'Kompetensi Kejuruan SMK' },
             { grade: '12', level: 'SMK', label: 'Kelas 12', fullName: 'SMK • Kelas 12', desc: 'Siap Kerja & Ujian SMK' }
@@ -760,6 +785,9 @@
                     '7': 'Greeting, Pronoun, Simple Present & Vocabulary',
                     '8': 'Present Continuous, Comparative & Past Tense',
                     '9': 'Passive Voice, Conditional & Report Text',
+                    'sma10': 'Recount Text, Narrative Text & Descriptive SMA',
+                    'sma11': 'Analytical Exposition, Hortatory & Passive Voice',
+                    'sma12': 'News Item, Conditional Sentences & Academic Reading',
                     '10': 'Self Introduction, Descriptive & Announcement SMK',
                     '11': 'Procedure Text,SOP, Analytical Exposition & Offer',
                     '12': 'Job Application Letter, CV & Job Interview SMK'
@@ -782,6 +810,9 @@
                     '7': 'Teks Deskripsi, Pantun, Sinonim & Kalimat Baku',
                     '8': 'Teks Berita (5W+1H), Iklan, Slogan & Eksposisi',
                     '9': 'Teks Laporan Percobaan, Pidato Persuasif & Cerpen',
+                    'sma10': 'Teks LHO, Teks Anekdot, Hikayat & Teks Negosiasi',
+                    'sma11': 'Teks Argumentasi, Cerpen, Resensi & Karya Ilmiah',
+                    'sma12': 'Teks Editorial, Novel Sejarah, Artikel & Kritik Sastra',
                     '10': 'Teks Laporan Hasil Observasi, Eksposisi & Anekdot',
                     '11': 'Teks Prosedur Kerja, Proposal & Karya Ilmiah SMK',
                     '12': 'Surat Lamaran Pekerjaan, Editorial & Dokumen Kerja'
@@ -804,6 +835,9 @@
                     '7': 'Bilangan Bulat, Pecahan, Aljabar & Bangun Datar',
                     '8': 'Pola Bilangan, Teorema Pythagoras & Lingkaran',
                     '9': 'Perpangkatan, Bentuk Akar, Fungsi Kuadrat & Tabung',
+                    'sma10': 'Eksponen, Logaritma, Trigonometri Dasar & Vektor',
+                    'sma11': 'Matriks, Polinomial, Lingkaran & Transformasi Geometri',
+                    'sma12': 'Limit Fungsi, Turunan, Integral & Kaidah Pencacahan',
                     '10': 'Eksponen, Logaritma, SPLDV & Barisan Aritmetika',
                     '11': 'Matriks, Bunga Majemuk, Fungsi & Peluang Terapan',
                     '12': 'Statistika Industri, Limit, Turunan & Peluang Kerja'
@@ -827,6 +861,9 @@
                     '7': 'Besaran Pokok, Klasifikasi Makhluk Hidup & Kalor',
                     '8': 'Gerak & Gaya (Hukum Newton), Pesawat Sederhana & Cahaya',
                     '9': 'Listrik Statis & Dinamis, Hukum Ohm & Pewarisan Sifat',
+                    'sma10': 'Pengukuran Fisika, Struktur Atom & Keanekaragaman Hayati',
+                    'sma11': 'Kesetimbangan, Termodinamika, Laju Reaksi & Sistem Organ',
+                    'sma12': 'Induksi Elektromagnetik, Reaksi Redoks & Genetika DNA',
                     '10': 'K3LH SMK, Energi Terbarukan & Ekosistem Lingkungan',
                     '11': 'Termodinamika, Fluida, Kelistrikan & Polimer Industri',
                     '12': 'Elektronika Digital, Otomasi Sensor & Pengolahan Limbah'
@@ -3345,6 +3382,1153 @@
                         explanation: 'Pengomposan mengubah limbah organik menjadi pupuk kompos yang menyuburkan tanaman.'
                     }
                 ]
+            },
+
+            // ==========================================
+            // KELAS 10 SMA (15 Soal per Mapel = 3 Paket)
+            // ==========================================
+            'sma10': {
+                inggris: [
+                    {
+                        q: 'Which sentence uses the Simple Past Tense correctly to tell a past experience in a Recount Text?',
+                        options: ['I visit the museum yesterday.', 'I visited the museum last Sunday.', 'I am visiting the museum tomorrow.', 'I have visit the museum yesterday.'],
+                        correct: 1,
+                        explanation: 'Recount Text menggunakan Simple Past Tense (Verb-2), seperti "visited" dengan keterangan waktu "last Sunday".'
+                    },
+                    {
+                        q: 'What is the main social function of a Narrative Text (e.g., Malin Kundang or Cinderella)?',
+                        options: ['To persuade readers to buy a product', 'To entertain readers with a story and moral value', 'To explain how a machine works step-by-step', 'To report scientific observation results'],
+                        correct: 1,
+                        explanation: 'Narrative Text bertujuan menghibur pembaca melalui cerita fiksi/legenda sekaligus menyampaikan pesan moral.'
+                    },
+                    {
+                        q: 'In the generic structure of a Narrative Text, the part where the conflict or problem begins to rise is called...',
+                        options: ['Orientation', 'Complication', 'Resolution', 'Re-orientation'],
+                        correct: 1,
+                        explanation: 'Complication adalah bagian munculnya masalah/konflik dalam cerita.'
+                    },
+                    {
+                        q: 'Choose the best adjective to complete the Descriptive Text: "Raja Ampat is famous for its _____ underwater biodiversity."',
+                        options: ['extraordinary', 'carelessly', 'slowly', 'happily'],
+                        correct: 0,
+                        explanation: '"Extraordinary" (luar biasa) adalah kata sifat (adjective) yang tepat untuk menerangkan kata benda "biodiversity".'
+                    },
+                    {
+                        q: 'Sinta: "Congratulations on winning the National Science Olympiad!"\nBima: "_____"',
+                        options: ['Thank you so much, Sinta!', 'Never mind, it is okay.', 'I am sorry to hear that.', 'You are welcome to go.'],
+                        correct: 0,
+                        explanation: 'Ucapan selamat (congratulating) dibalas dengan ucapan terima kasih yang sopan.'
+                    },
+                    {
+                        q: 'Which time conjunction is commonly used in a Recount Text?',
+                        options: ['First, then, finally', 'Although, even though', 'Unless, provided that', 'Therefore, consequently'],
+                        correct: 0,
+                        explanation: 'Recount Text menceritakan urutan kejadian secara kronologis sehingga sering memakai "First, then, finally".'
+                    },
+                    {
+                        q: 'The synonym of the word "ancient" in the sentence "We saw an ancient temple" is...',
+                        options: ['modern', 'old / historic', 'tiny', 'expensive'],
+                        correct: 1,
+                        explanation: '"Ancient" berarti kuno atau bersejarah (old / historic).'
+                    },
+                    {
+                        q: 'Which sentence expresses an intention or plan for the future?',
+                        options: ['I am going to join the English club this semester.', 'I joined the English club last year.', 'She was reading a novel at 8 PM.', 'They lived in Bandung in 2020.'],
+                        correct: 0,
+                        explanation: '"Be going to + V1" digunakan untuk menyatakan rencana atau niat di masa depan.'
+                    },
+                    {
+                        q: 'In a Descriptive Text about a historical place, which tense is predominantly used?',
+                        options: ['Simple Present Tense', 'Past Continuous Tense', 'Future Perfect Tense', 'Past Perfect Tense'],
+                        correct: 0,
+                        explanation: 'Descriptive Text umumnya menggunakan Simple Present Tense untuk menggambarkan fakta dan ciri objek.'
+                    },
+                    {
+                        q: '"Once upon a time, there lived a wise king in a peaceful kingdom." This sentence belongs to the _____ part of a narrative.',
+                        options: ['Orientation', 'Complication', 'Resolution', 'Coda'],
+                        correct: 0,
+                        explanation: 'Orientation memperkenalkan tokoh, waktu, dan latar tempat di awal cerita.'
+                    },
+                    {
+                        q: 'Choose the correct pronoun: "The students presented _____ research project in front of the class."',
+                        options: ['their', 'they', 'them', 'theirs'],
+                        correct: 0,
+                        explanation: '"Their" adalah possessive adjective yang menerangkan frasa benda "research project".'
+                    },
+                    {
+                        q: 'What does "Don\'t judge a book by its cover" mean?',
+                        options: ['Always read the last page first', 'Do not judge someone or something only by appearance', 'Books with nice covers are always expensive', 'Covers protect books from dust'],
+                        correct: 1,
+                        explanation: 'Ungkapan tersebut berarti jangan menilai seseorang atau sesuatu hanya dari penampilan luarnya.'
+                    },
+                    {
+                        q: 'Which word is a regular verb in Past Tense?',
+                        options: ['studied', 'wrote', 'spoke', 'went'],
+                        correct: 0,
+                        explanation: '"Studied" (dari study) adalah regular verb berakhiran -ed, sedangkan wrote, spoke, went adalah irregular verbs.'
+                    },
+                    {
+                        q: '"You look great in that batik shirt!" This expression is used to...',
+                        options: ['compliment someone', 'complain about service', 'ask for permission', 'refuse an invitation'],
+                        correct: 0,
+                        explanation: 'Kalimat tersebut adalah ungkapan pujian (compliment).'
+                    },
+                    {
+                        q: 'Complete the sentence: "While Rani _____ dinner, the phone rang."',
+                        options: ['was cooking', 'cooks', 'has cooked', 'will cook'],
+                        correct: 0,
+                        explanation: 'Kejadian yang sedang berlangsung di masa lampau saat kejadian lain terjadi memakai Past Continuous ("was cooking").'
+                    }
+                ],
+                indonesia: [
+                    {
+                        q: 'Teks yang menyajikan hasil pengamatan terhadap suatu objek secara objektif, faktual, dan sistematis disebut...',
+                        options: ['Teks Laporan Hasil Observasi (LHO)', 'Teks Anekdot', 'Teks Hikayat', 'Teks Puisi'],
+                        correct: 0,
+                        explanation: 'Teks LHO melaporkan hasil pengamatan objek secara objektif dan berdasarkan fakta.'
+                    },
+                    {
+                        q: 'Struktur Teks Anekdot yang berisi bagian lucu, unik, atau mengundang tawa sekaligus sindiran disebut...',
+                        options: ['Abstraksi', 'Orientasi', 'Krisis', 'Koda'],
+                        correct: 2,
+                        explanation: 'Krisis dalam teks anekdot adalah bagian puncak yang memuat hal unik, lucu, atau sindiran tajam.'
+                    },
+                    {
+                        q: 'Salah satu ciri khas karya sastra lama berbentuk Hikayat adalah bersifat istanasentris, artinya...',
+                        options: ['Berlatar kehidupan di perkotaan modern', 'Mengisahkan kehidupan di lingkungan istana/kerajaan', 'Menggunakan bahasa gaul masa kini', 'Ditulis dalam bentuk tabel angka'],
+                        correct: 1,
+                        explanation: 'Istanasentris berarti cerita berpusat pada kehidupan raja, pangeran, dan lingkungan istana.'
+                    },
+                    {
+                        q: 'Dalam Teks Negosiasi, tujuan utama dari proses tawar-menawar antara dua belah pihak adalah...',
+                        options: ['Mencari siapa yang paling kuat', 'Mencapai kesepakatan bersama yang saling menguntungkan', 'Menunda keputusan tanpa batas waktu', 'Menghindari komunikasi langsung'],
+                        correct: 1,
+                        explanation: 'Negosiasi bertujuan mencapai kesepakatan (win-win solution) tanpa merugikan salah satu pihak.'
+                    },
+                    {
+                        q: 'Kata "kemustahilan" pada hikayat berarti peristiwa yang...',
+                        options: ['Sangat masuk akal dan ilmiah', 'Tidak mungkin terjadi secara logika nyata (pralogis)', 'Terjadi setiap hari di sekolah', 'Mudah dibuktikan di laboratorium'],
+                        correct: 1,
+                        explanation: 'Hikayat sering mengandung kemustahilan/hal pralogis seperti kesaktian luar biasa.'
+                    },
+                    {
+                        q: 'Kalimat definisi dalam Teks LHO biasanya ditandai dengan kata kerja kopula seperti...',
+                        options: ['adalah, ialah, merupakan', 'makan, minum, berlari', 'ayo, mari, silakan', 'aduh, wah, astaga'],
+                        correct: 0,
+                        explanation: 'Kata "adalah", "ialah", dan "merupakan" menandai kalimat definisi dalam pernyataan umum Teks LHO.'
+                    },
+                    {
+                        q: 'Bagian awal teks biografi yang memperkenalkan identitas tokoh, tempat lahir, dan latar belakang keluarga disebut...',
+                        options: ['Orientasi', 'Reorientasi', 'Krisis', 'Evaluasi'],
+                        correct: 0,
+                        explanation: 'Orientasi berisi pengenalan awal tokoh dalam teks biografi.'
+                    },
+                    {
+                        q: 'Kalimat berikut yang menggunakan kata baku sesuai PUEBI/EYD V adalah...',
+                        options: ['Siswa SMA melakukan praktek kimia di laboratorium.', 'Siswa SMA melakukan praktik kimia di laboratorium.', 'Mereka menganalisa data hasil pengamatan.', 'Jadwal ujian sudah di rubah oleh panitia.'],
+                        correct: 1,
+                        explanation: 'Bentuk baku yang benar adalah "praktik" (bukan praktek), "menganalisis", dan "diubah".'
+                    },
+                    {
+                        q: 'Majas yang membandingkan benda mati seolah-olah memiliki sifat atau perilaku seperti manusia disebut...',
+                        options: ['Personifikasi', 'Hiperbola', 'Metafora', 'Litotes'],
+                        correct: 0,
+                        explanation: 'Personifikasi memberi sifat manusia pada benda mati, misalnya "Angin berbisik lembut".'
+                    },
+                    {
+                        q: 'Unsur yang membangun puisi dari dalam, seperti tema, rasa, nada, dan amanat, disebut...',
+                        options: ['Unsur batin puisi', 'Unsur fisik puisi', 'Tipografi', 'Rima akhir'],
+                        correct: 0,
+                        explanation: 'Tema, perasaan, nada, dan amanat merupakan unsur batin puisi.'
+                    },
+                    {
+                        q: 'Dalam diskusi/debat di kelas SMA, pihak yang mendukung atau setuju terhadap mosi disebut tim...',
+                        options: ['Afirmasi (Pro)', 'Oposisi (Kontra)', 'Netral', 'Moderator'],
+                        correct: 0,
+                        explanation: 'Tim afirmasi adalah pihak yang mendukung mosi, sedangkan oposisi adalah pihak yang menentang.'
+                    },
+                    {
+                        q: 'Sinonim dari kata "efektif" adalah...',
+                        options: ['Berhasil guna / tepat sasaran', 'Berlebihan', 'Berbelit-belit', 'Tertunda'],
+                        correct: 0,
+                        explanation: 'Efektif berarti dapat membawa hasil atau berhasil guna.'
+                    },
+                    {
+                        q: 'Penulisan huruf kapital yang tepat pada nama geografi adalah...',
+                        options: ['Mereka mendaki gunung Semeru di Jawa Timur.', 'Mereka mendaki Gunung Semeru di Jawa Timur.', 'Dia berlibur ke danau toba.', 'Kami menyeberangi selat sunda.'],
+                        correct: 1,
+                        explanation: 'Unsur nama geografi yang diikuti nama diri ditulis dengan huruf kapital ("Gunung Semeru").'
+                    },
+                    {
+                        q: 'Tujuan utama penulisan teks biografi tokoh inspiratif adalah...',
+                        options: ['Meneladani nilai positif dan perjuangan tokoh', 'Mempromosikan barang dagangan', 'Menyampaikan laporan keuangan', 'Mengkritik kebijakan lalu lintas'],
+                        correct: 0,
+                        explanation: 'Biografi tokoh ditulis agar pembaca dapat meneladani sikap, semangat, dan keteladanan tokoh.'
+                    },
+                    {
+                        q: 'Kalimat tanya yang digunakan dalam teks anekdot untuk menyindir tanpa memerlukan jawaban disebut kalimat...',
+                        options: ['Retoris', 'Imperatif', 'Deklaratif', 'Seruan'],
+                        correct: 0,
+                        explanation: 'Pertanyaan retoris adalah pertanyaan yang tidak membutuhkan jawaban karena jawabannya sudah tersirat.'
+                    }
+                ],
+                matematika: [
+                    {
+                        q: 'Nilai dari 2^5 × 2^3 : 2^4 adalah...',
+                        options: ['8', '16', '32', '64'],
+                        correct: 1,
+                        explanation: '2^(5 + 3 - 4) = 2^4 = 16.'
+                    },
+                    {
+                        q: 'Nilai dari ²log 32 adalah...',
+                        options: ['4', '5', '6', '8'],
+                        correct: 1,
+                        explanation: 'Karena 2^5 = 32, maka ²log 32 = 5.'
+                    },
+                    {
+                        q: 'Pada segitiga siku-siku, perbandingan trigonometri sin(α) didefinisikan sebagai...',
+                        options: ['Sisi depan / sisi miring', 'Sisi samping / sisi miring', 'Sisi depan / sisi samping', 'Sisi miring / sisi depan'],
+                        correct: 0,
+                        explanation: 'sin(α) = depan / miring (de/mi), cos(α) = sa/mi, dan tan(α) = de/sa.'
+                    },
+                    {
+                        q: 'Nilai dari sin 30° + cos 60° adalah...',
+                        options: ['0,5', '1', '√3', '2'],
+                        correct: 1,
+                        explanation: 'sin 30° = 1/2 dan cos 60° = 1/2, sehingga 1/2 + 1/2 = 1.'
+                    },
+                    {
+                        q: 'Diketahui vektor a = (3, 4). Panjang (besar) vektor a adalah...',
+                        options: ['5', '7', '12', '25'],
+                        correct: 0,
+                        explanation: '|a| = √(3² + 4²) = √(9 + 16) = √25 = 5.'
+                    },
+                    {
+                        q: 'Suku ke-10 dari barisan aritmetika 3, 7, 11, 15, ... adalah...',
+                        options: ['35', '39', '41', '43'],
+                        correct: 1,
+                        explanation: 'a = 3, b = 4. U10 = 3 + (10 - 1)×4 = 3 + 36 = 39.'
+                    },
+                    {
+                        q: 'Jumlah tak hingga deret geometri 8 + 4 + 2 + 1 + ... adalah...',
+                        options: ['12', '15', '16', '24'],
+                        correct: 2,
+                        explanation: 'a = 8, r = 1/2. S∞ = a / (1 - r) = 8 / (1 - 1/2) = 16.'
+                    },
+                    {
+                        q: 'Jika f(x) = 3x - 5, maka nilai f(4) adalah...',
+                        options: ['5', '7', '12', '17'],
+                        correct: 1,
+                        explanation: 'f(4) = 3(4) - 5 = 12 - 5 = 7.'
+                    },
+                    {
+                        q: 'Akar-akar persamaan kuadrat x² - 7x + 12 = 0 adalah...',
+                        options: ['3 dan 4', '-3 dan -4', '2 dan 6', '1 dan 12'],
+                        correct: 0,
+                        explanation: '(x - 3)(x - 4) = 0, sehingga x = 3 atau x = 4.'
+                    },
+                    {
+                        q: 'Nilai dari tan 45° adalah...',
+                        options: ['0', '1/2', '1', '√3'],
+                        correct: 2,
+                        explanation: 'tan 45° = sin 45° / cos 45° = 1.'
+                    },
+                    {
+                        q: 'Jika ³log 9 + ³log 3 = ...',
+                        options: ['2', '3', '4', '9'],
+                        correct: 1,
+                        explanation: '³log 9 = 2 dan ³log 3 = 1, sehingga 2 + 1 = 3.'
+                    },
+                    {
+                        q: 'Diketahui vektor u = (2, -1) dan v = (4, 5). Hasil dari u + v adalah...',
+                        options: ['(6, 4)', '(6, 6)', '(2, 6)', '(8, -5)'],
+                        correct: 0,
+                        explanation: 'u + v = (2 + 4, -1 + 5) = (6, 4).'
+                    },
+                    {
+                        q: 'Bentuk sederhana dari √75 adalah...',
+                        options: ['3√5', '5√3', '5√5', '15√5'],
+                        correct: 1,
+                        explanation: '√75 = √(25 × 3) = 5√3.'
+                    },
+                    {
+                        q: 'Himpunan penyelesaian dari |x - 2| = 5 adalah...',
+                        options: ['{-3, 7}', '{3, 7}', '{-7, 3}', '{-5, 5}'],
+                        correct: 0,
+                        explanation: 'x - 2 = 5 -> x = 7, atau x - 2 = -5 -> x = -3.'
+                    },
+                    {
+                        q: 'Peluang munculnya mata dadu genap pada pelemparan sebuah dadu bersisi 6 adalah...',
+                        options: ['1/6', '1/3', '1/2', '2/3'],
+                        correct: 2,
+                        explanation: 'Mata dadu genap ada 3 ({2, 4, 6}) dari 6 sisi, jadi 3/6 = 1/2.'
+                    }
+                ],
+                ipa: [
+                    {
+                        q: 'Alat ukur panjang dalam laboratorium Fisika SMA yang memiliki ketelitian hingga 0,01 mm adalah...',
+                        options: ['Mistar / Penggaris', 'Jangka Sorong', 'Mikrometer Sekrup', 'Meteran Gulung'],
+                        correct: 2,
+                        explanation: 'Mikrometer sekrup memiliki ketelitian 0,01 mm, lebih teliti dari jangka sorong (0,1 mm) dan mistar (1 mm).'
+                    },
+                    {
+                        q: 'Dalam struktur atom, partikel subatom yang bermuatan positif dan berada di dalam inti atom adalah...',
+                        options: ['Elektron', 'Proton', 'Neutron', 'Positron'],
+                        correct: 1,
+                        explanation: 'Proton bermuatan positif (+), neutron netral, dan elektron bermuatan negatif (-).'
+                    },
+                    {
+                        q: 'Tingkatan keanekaragaman hayati yang ditunjukkan oleh variasi warna bunga mawar (merah, putih, kuning) dalam satu spesies adalah keanekaragaman tingkat...',
+                        options: ['Gen', 'Spesies (Jenis)', 'Ekosistem', 'Bioma'],
+                        correct: 0,
+                        explanation: 'Variasi sifat dalam satu spesies yang sama termasuk keanekaragaman tingkat gen.'
+                    },
+                    {
+                        q: 'Hukum I Newton menyatakan bahwa jika resultan gaya yang bekerja pada benda sama dengan nol, maka benda yang diam akan tetap diam. Sifat ini disebut...',
+                        options: ['Inersia (Kelembaman)', 'Aksi-Reaksi', 'Gravitasi', 'Momentum'],
+                        correct: 0,
+                        explanation: 'Hukum I Newton dikenal sebagai hukum kelembaman (inersia).'
+                    },
+                    {
+                        q: 'Unsur dengan nomor atom 11 (Natrium/Na) memiliki konfigurasi elektron kulit (K, L, M) yaitu...',
+                        options: ['2, 8, 1', '2, 9', '2, 7, 2', '1, 8, 2'],
+                        correct: 0,
+                        explanation: 'Kulit K maksimal 2 elektron, kulit L maksimal 8 elektron, sisanya 1 elektron di kulit M.'
+                    },
+                    {
+                        q: 'Virus hanya dapat berkembang biak apabila berada di dalam sel inang yang hidup karena virus bersifat...',
+                        options: ['Parasit obligat intraseluler', 'Autotrof fotosintetik', 'Saprofit bebas', 'Multiseluler kompleks'],
+                        correct: 0,
+                        explanation: 'Virus tidak memiliki organel metabolisme sendiri sehingga menjadi parasit obligat di dalam sel inang.'
+                    },
+                    {
+                        q: 'Satuan Internasional (SI) untuk besaran gaya adalah...',
+                        options: ['Joule', 'Newton', 'Watt', 'Pascal'],
+                        correct: 1,
+                        explanation: 'Gaya memiliki satuan SI Newton (N).'
+                    },
+                    {
+                        q: 'Ikatan kimia yang terjadi akibat serah terima elektron antara atom logam dan nonlogam disebut ikatan...',
+                        options: ['Kovalen', 'Ion', 'Hidrogen', 'Logam'],
+                        correct: 1,
+                        explanation: 'Ikatan ion terbentuk melalui serah terima elektron antara kation (logam) dan anion (nonlogam).'
+                    },
+                    {
+                        q: 'Organisme yang berperan sebagai produsen dalam ekosistem darat maupun perairan adalah...',
+                        options: ['Tumbuhan hijau dan fitoplankton', 'Jamur dan bakteri pengurai', 'Herbivora', 'Karnivora puncak'],
+                        correct: 0,
+                        explanation: 'Tumbuhan hijau dan fitoplankton mampu membuat makanan sendiri melalui fotosintesis.'
+                    },
+                    {
+                        q: 'Sebuah benda bermassa 4 kg bergerak dengan percepatan 3 m/s². Besar gaya yang bekerja pada benda tersebut adalah...',
+                        options: ['7 N', '12 N', '1,3 N', '24 N'],
+                        correct: 1,
+                        explanation: 'Berdasarkan Hukum II Newton, F = m × a = 4 kg × 3 m/s² = 12 N.'
+                    },
+                    {
+                        q: 'Gas rumah kaca utama yang dihasilkan dari pembakaran bahan bakar fosil dan memicu pemanasan global adalah...',
+                        options: ['Oksigen (O₂)', 'Karbon dioksida (CO₂)', 'Nitrogen (N₂)', 'Argon (Ar)'],
+                        correct: 1,
+                        explanation: 'Peningkatan konsentrasi CO₂ di atmosfer memerangkap panas bumi (efek rumah kaca).'
+                    },
+                    {
+                        q: 'Dalam reaksi kimia yang setara, jumlah massa zat sebelum reaksi sama dengan jumlah massa zat sesudah reaksi. Pernyataan ini adalah Hukum...',
+                        options: ['Kekekalan Massa (Lavoisier)', 'Perbandingan Tetap (Proust)', 'Perbandingan Berganda (Dalton)', 'Avogadro'],
+                        correct: 0,
+                        explanation: 'Antoine Lavoisier merumuskan Hukum Kekekalan Massa.'
+                    },
+                    {
+                        q: 'Simbiosis antara jamur dan ganggang hijau/cyanobacteria yang membentuk lumut kerak (Lichenes) bersifat...',
+                        options: ['Mutualisme', 'Parasitisme', 'Komensalisme', 'Kompetisi'],
+                        correct: 0,
+                        explanation: 'Jamur memberi air/mineral dan ganggang memberi hasil fotosintesis, sehingga saling menguntungkan (mutualisme).'
+                    },
+                    {
+                        q: 'Angka penting pada hasil pengukuran 0,0450 meter berjumlah...',
+                        options: ['2 angka penting', '3 angka penting', '4 angka penting', '5 angka penting'],
+                        correct: 1,
+                        explanation: 'Angka nol di depan bukan angka penting; yang termasuk angka penting adalah 4, 5, dan 0 di belakang (3 angka penting).'
+                    },
+                    {
+                        q: 'Energi kinetik benda bermassa 2 kg yang bergerak dengan kecepatan 5 m/s adalah...',
+                        options: ['10 Joule', '25 Joule', '50 Joule', '5 Joule'],
+                        correct: 1,
+                        explanation: 'Ek = 1/2 × m × v² = 1/2 × 2 × 5² = 25 Joule.'
+                    }
+                ]
+            },
+
+            // ==========================================
+            // KELAS 11 SMA (15 Soal per Mapel = 3 Paket)
+            // ==========================================
+            'sma11': {
+                inggris: [
+                    {
+                        q: 'What is the purpose of an Analytical Exposition Text?',
+                        options: ['To persuade the reader that a topic/issue is important to consider', 'To tell a funny personal story', 'To give step-by-step cooking instructions', 'To describe a tourist destination'],
+                        correct: 0,
+                        explanation: 'Analytical Exposition bertujuan meyakinkan pembaca bahwa suatu isu/topik penting dengan argumen logis.'
+                    },
+                    {
+                        q: 'Which structure belongs to an Analytical Exposition Text?',
+                        options: ['Thesis - Arguments - Reiteration', 'Orientation - Complication - Resolution', 'Goal - Materials - Steps', 'Identification - Description'],
+                        correct: 0,
+                        explanation: 'Struktur Analytical Exposition terdiri dari Thesis, Arguments, dan Reiteration.'
+                    },
+                    {
+                        q: 'Change into Passive Voice: "The researchers conduct the experiment."',
+                        options: ['The experiment is conducted by the researchers.', 'The experiment was conducted by the researchers.', 'The experiment conducts the researchers.', 'The experiment is conducting by the researchers.'],
+                        correct: 0,
+                        explanation: 'Simple Present Passive menggunakan pola "is/am/are + V3" -> "is conducted".'
+                    },
+                    {
+                        q: '"In my opinion, reading books regularly improves critical thinking." This sentence expresses...',
+                        options: ['Giving an opinion', 'Asking for help', 'Making an apology', 'Declining an offer'],
+                        correct: 0,
+                        explanation: 'Frasa "In my opinion..." digunakan untuk menyampaikan pendapat (giving opinion).'
+                    },
+                    {
+                        q: 'What is the difference between Analytical Exposition and Hortatory Exposition at the end of the text?',
+                        options: ['Hortatory ends with a Recommendation, Analytical ends with Reiteration', 'Analytical has no thesis', 'Hortatory uses Past Tense only', 'Analytical is always a dialogue'],
+                        correct: 0,
+                        explanation: 'Hortatory Exposition diakhiri Recommendation (ajakan/saran), sedangkan Analytical diakhiri Reiteration (penegasan ulang).'
+                    },
+                    {
+                        q: 'Choose the correct conjunction of cause and effect: "The flight was delayed _____ the heavy storm."',
+                        options: ['because of', 'because', 'although', 'unless'],
+                        correct: 0,
+                        explanation: '"Because of" diikuti oleh frasa kata benda ("the heavy storm"), sedangkan "because" diikuti klausa.'
+                    },
+                    {
+                        q: 'Which sentence uses a modal verb to give a strong recommendation?',
+                        options: ['Students should manage their study time wisely.', 'Students were managing their time.', 'Students managed their time yesterday.', 'Students are in the library.'],
+                        correct: 0,
+                        explanation: 'Modal "should" digunakan untuk memberikan saran atau rekomendasi.'
+                    },
+                    {
+                        q: '"I strongly believe that renewable energy is the key to a sustainable future." The word "sustainable" means...',
+                        options: ['berkelanjutan', 'berbahaya', 'sementara', 'terbatas'],
+                        correct: 0,
+                        explanation: '"Sustainable" berarti berkelanjutan atau ramah lingkungan dalam jangka panjang.'
+                    },
+                    {
+                        q: 'Passive Voice in Simple Past: "The Nobel Prize in Physics _____ by Albert Einstein in 1921."',
+                        options: ['was won', 'is won', 'won', 'will be won'],
+                        correct: 0,
+                        explanation: 'Kejadian pasif di masa lampau (1921) memakai "was/were + V3" -> "was won".'
+                    },
+                    {
+                        q: 'Which expression shows agreement with someone\'s opinion?',
+                        options: ['I couldn\'t agree more with your point.', 'I am afraid I have to disagree.', 'That doesn\'t make sense to me.', 'I don\'t think so.'],
+                        correct: 0,
+                        explanation: '"I couldn\'t agree more" berarti sangat setuju.'
+                    },
+                    {
+                        q: 'In a Hortatory Exposition Text, which connective word is often used to list arguments?',
+                        options: ['Firstly, secondly, moreover', 'Once upon a time', 'Meanwhile, suddenly', 'Yesterday, last week'],
+                        correct: 0,
+                        explanation: 'Kata hubung "Firstly, secondly, moreover" digunakan untuk menyusun urutan argumen.'
+                    },
+                    {
+                        q: 'Identify the Cause in this sentence: "Due to excessive plastic waste, marine ecosystems are severely threatened."',
+                        options: ['Excessive plastic waste', 'Marine ecosystems', 'Are severely threatened', 'Due to'],
+                        correct: 0,
+                        explanation: 'Penyebab (cause) dari terancamnya ekosistem laut adalah "excessive plastic waste".'
+                    },
+                    {
+                        q: 'Choose the correct conditional sentence Type 1: "If you study consistently, you _____ the exam easily."',
+                        options: ['will pass', 'passed', 'would pass', 'had passed'],
+                        correct: 0,
+                        explanation: 'Conditional Type 1: If + Simple Present, Subject + will + V1.'
+                    },
+                    {
+                        q: 'The antonym of "advantage" in an argumentative essay is...',
+                        options: ['disadvantage / drawback', 'benefit', 'strength', 'opportunity'],
+                        correct: 0,
+                        explanation: 'Lawan kata dari "advantage" (keuntungan) adalah "disadvantage" atau "drawback" (kerugian/kekurangan).'
+                    },
+                    {
+                        q: '"Would you mind _____ the window? It\'s a bit hot in here."',
+                        options: ['opening', 'open', 'to open', 'opened'],
+                        correct: 0,
+                        explanation: 'Ungkapan "Would you mind..." selalu diikuti kata kerja bentuk -ing (gerund).'
+                    }
+                ],
+                indonesia: [
+                    {
+                        q: 'Teks yang berisi penilaian tentang kelebihan dan kekurangan suatu karya (buku, film, atau pementasan) disebut...',
+                        options: ['Resensi', 'Hikayat', 'Anekdot', 'Prosedur'],
+                        correct: 0,
+                        explanation: 'Resensi adalah ulasan yang menilai kelebihan dan kekurangan sebuah karya untuk pembaca.'
+                    },
+                    {
+                        q: 'Bagian awal dari sebuah Karya Ilmiah yang memuat latar belakang masalah, rumusan masalah, dan tujuan penelitian adalah...',
+                        options: ['Bab I Pendahuluan', 'Bab II Landasan Teori', 'Bab III Metodologi', 'Daftar Pustaka'],
+                        correct: 0,
+                        explanation: 'Latar belakang, rumusan masalah, dan tujuan penelitian berada di Bab I Pendahuluan.'
+                    },
+                    {
+                        q: 'Penulisan Daftar Pustaka yang benar untuk buku berjudul "Laskar Pelangi" karya Andrea Hirata terbitan Bentang Pustaka tahun 2005 di Yogyakarta adalah...',
+                        options: [
+                            'Hirata, Andrea. 2005. Laskar Pelangi. Yogyakarta: Bentang Pustaka.',
+                            'Andrea Hirata. 2005. Laskar Pelangi. Yogyakarta: Bentang Pustaka.',
+                            'Hirata, Andrea. Laskar Pelangi. 2005. Bentang Pustaka: Yogyakarta.',
+                            'Andrea, Hirata. 2005. Laskar Pelangi. Bentang Pustaka.'
+                        ],
+                        correct: 0,
+                        explanation: 'Urutan daftar pustaka baku: Nama belakang, Nama depan. Tahun. Judul Buku. Kota Terbit: Penerbit.'
+                    },
+                    {
+                        q: 'Unsur intrinsik cerpen yang berkaitan dengan sudut pandang pengarang saat menceritakan kisah (aku atau dia) disebut...',
+                        options: ['Sudut pandang (Point of View)', 'Alur (Plot)', 'Latar (Setting)', 'Amanat'],
+                        correct: 0,
+                        explanation: 'Sudut pandang menentukan posisi pengarang dalam cerita (orang pertama "aku" atau orang ketiga "dia").'
+                    },
+                    {
+                        q: 'Kalimat yang berfungsi menyatakan hubungan sebab-akibat dalam teks argumentasi atau eksplanasi biasanya menggunakan konjungsi...',
+                        options: ['Oleh karena itu, akibatnya, sebab', 'Sedangkan, melainkan', 'Atau, maupun', 'Lalu, kemudian'],
+                        correct: 0,
+                        explanation: 'Konjungsi kausalitas (sebab-akibat) meliputi "oleh karena itu", "akibatnya", "sebab", dan "karena".'
+                    },
+                    {
+                        q: 'Dalam karya ilmiah, ragam bahasa yang wajib digunakan adalah bahasa...',
+                        options: ['Baku, objektif, lugas, dan denotatif', 'Santai, penuh kiasan, dan emosional', 'Bahasa gaul remaja', 'Subjektif dan bertele-tele'],
+                        correct: 0,
+                        explanation: 'Karya ilmiah menuntut bahasa baku, objektif, lugas, dan bermakna denotatif (makna sebenarnya).'
+                    },
+                    {
+                        q: 'Teks drama memiliki bagian percakapan antartokoh yang disebut...',
+                        options: ['Dialog', 'Prolog', 'Epilog', 'Kramagung'],
+                        correct: 0,
+                        explanation: 'Dialog adalah percakapan antartokoh, sedangkan kramagung adalah petunjuk laku/tindakan dalam tanda kurung.'
+                    },
+                    {
+                        q: 'Petunjuk laku atau ekspresi tokoh yang ditulis di dalam tanda kurung pada naskah drama disebut...',
+                        options: ['Kramagung', 'Monolog', 'Prolog', 'Orientasi'],
+                        correct: 0,
+                        explanation: 'Kramagung memberikan arahan gerakan, ekspresi, atau latar kepada pemeran drama.'
+                    },
+                    {
+                        q: 'Dalam proposal kegiatan OSIS SMA, bagian yang merinci siapa saja peserta atau pihak yang terlibat disebut...',
+                        options: ['Sasaran / Peserta Kegiatan', 'Landasan Teori', 'Daftar Pustaka', 'Lampiran Nilai'],
+                        correct: 0,
+                        explanation: 'Sasaran/peserta kegiatan menjelaskan target pihak yang mengikuti acara dalam proposal.'
+                    },
+                    {
+                        q: 'Kata "hipotesis" dalam karya ilmiah berarti...',
+                        options: ['Dugaan sementara yang masih perlu diuji kebenarannya', 'Kesimpulan akhir yang mutlak', 'Daftar tabel penelitian', 'Ucapan terima kasih penulis'],
+                        correct: 0,
+                        explanation: 'Hipotesis adalah jawaban atau dugaan sementara terhadap rumusan masalah penelitian.'
+                    },
+                    {
+                        q: 'Kalimat berikut yang mengandung makna denotatif adalah...',
+                        options: ['Adik jatuh dari kursi saat bermain.', 'Dia menjadi tangan kanan ketua OSIS.', 'Kabar itu menjadi buah bibir warga.', 'Ia harus membanting tulang setiap hari.'],
+                        correct: 0,
+                        explanation: '"Jatuh dari kursi" bermakna sebenarnya (denotatif), sedangkan tangan kanan, buah bibir, dan membanting tulang adalah ungkapan konotatif.'
+                    },
+                    {
+                        q: 'Bagian penutup pada naskah drama yang berisi kesimpulan atau pesan setelah cerita selesai disebut...',
+                        options: ['Epilog', 'Prolog', 'Konflik', 'Klimaks'],
+                        correct: 0,
+                        explanation: 'Prolog berada di awal pembuka drama, sedangkan epilog berada di akhir penutup.'
+                    },
+                    {
+                        q: 'Penulisan singkatan gelar akademik yang benar sesuai ejaan adalah...',
+                        options: ['Dr. Budi Santoso, M.Pd.', 'Dr Budi Santoso M.Pd', 'DR. Budi Santoso, Mpd.', 'Dr. Budi Santoso. M.Pd'],
+                        correct: 0,
+                        explanation: 'Gelar diikuti tanda titik dan dipisahkan koma sebelum gelar di belakang nama: Dr. Budi Santoso, M.Pd.'
+                    },
+                    {
+                        q: 'Kalimat fakta yang tepat untuk teks berita atau argumentasi adalah...',
+                        options: ['Indonesia memperingati Hari Kemerdekaan setiap tanggal 17 Agustus.', 'Upacara tahun ini terasa sangat meriah dan mengharukan.', 'Sebaiknya siswa lebih rajin membaca buku.', 'Film tersebut merupakan film terbaik sepanjang masa.'],
+                        correct: 0,
+                        explanation: 'Tanggal 17 Agustus sebagai Hari Kemerdekaan Indonesia adalah fakta objektif yang dapat dibuktikan.'
+                    },
+                    {
+                        q: 'Istilah untuk ringkasan singkat isi sebuah karya ilmiah atau artikel jurnal di bagian awal adalah...',
+                        options: ['Abstrak', 'Indeks', 'Glosarium', 'Lampiran'],
+                        correct: 0,
+                        explanation: 'Abstrak merangkum tujuan, metode, dan hasil utama karya ilmiah secara ringkas.'
+                    }
+                ],
+                matematika: [
+                    {
+                        q: 'Determinan dari matriks A = [[4, 3], [2, 5]] adalah...',
+                        options: ['14', '26', '20', '6'],
+                        correct: 0,
+                        explanation: 'det(A) = (4 × 5) - (3 × 2) = 20 - 6 = 14.'
+                    },
+                    {
+                        q: 'Persamaan lingkaran yang berpusat di titik (0, 0) dengan jari-jari r = 5 adalah...',
+                        options: ['x² + y² = 5', 'x² + y² = 25', 'x² - y² = 25', '(x - 5)² + (y - 5)² = 25'],
+                        correct: 1,
+                        explanation: 'Persamaan lingkaran pusat (0,0) berjari-jari r adalah x² + y² = r² = 5² = 25.'
+                    },
+                    {
+                        q: 'Diketahui polinomial P(x) = x³ - 2x² + 3x - 4. Nilai P(2) adalah...',
+                        options: ['2', '4', '6', '10'],
+                        correct: 0,
+                        explanation: 'P(2) = 2³ - 2(2²) + 3(2) - 4 = 8 - 8 + 6 - 4 = 2.'
+                    },
+                    {
+                        q: 'Bayangan titik A(3, -5) jika dicerminkan terhadap sumbu-X adalah...',
+                        options: ['(3, 5)', '(-3, -5)', '(-3, 5)', '(-5, 3)'],
+                        correct: 0,
+                        explanation: 'Pencerminan terhadap sumbu-X mengubah (x, y) menjadi (x, -y), sehingga (3, -5) menjadi (3, 5).'
+                    },
+                    {
+                        q: 'Jika matriks A = [[2, 1], [3, 4]] dan B = [[1, 5], [2, 0]], maka A + B adalah...',
+                        options: ['[[3, 6], [5, 4]]', '[[3, 5], [6, 4]]', '[[1, 4], [1, 4]]', '[[2, 5], [6, 0]]'],
+                        correct: 0,
+                        explanation: 'Penjumlahan matriks dilakukan per elemen seletak: [[2+1, 1+5], [3+2, 4+0]] = [[3, 6], [5, 4]].'
+                    },
+                    {
+                        q: 'Bayangan titik P(2, 4) setelah ditranslasi oleh T = (3, -1) adalah...',
+                        options: ['(5, 3)', '(5, 5)', '(-1, 5)', '(6, -4)'],
+                        correct: 0,
+                        explanation: 'Translasi (x + a, y + b) = (2 + 3, 4 + (-1)) = (5, 3).'
+                    },
+                    {
+                        q: 'Jika suku banyak P(x) = x² + 5x + 6 dibagi oleh (x - 1), maka sisanya menurut Teorema Sisa adalah...',
+                        options: ['12', '10', '2', '0'],
+                        correct: 0,
+                        explanation: 'Menurut Teorema Sisa, sisa pembagian oleh (x - 1) adalah P(1) = 1² + 5(1) + 6 = 12.'
+                    },
+                    {
+                        q: 'Derajat dari polinomial 5x⁴ - 3x² + 7x - 9 adalah...',
+                        options: ['4', '5', '3', '9'],
+                        correct: 0,
+                        explanation: 'Derajat polinomial adalah pangkat tertinggi variabelnya, yaitu 4.'
+                    },
+                    {
+                        q: 'Diketahui f(x) = 2x + 1 dan g(x) = x². Nilai dari (f ∘ g)(3) adalah...',
+                        options: ['19', '49', '13', '18'],
+                        correct: 0,
+                        explanation: 'g(3) = 3² = 9, lalu f(9) = 2(9) + 1 = 19.'
+                    },
+                    {
+                        q: 'Invers dari fungsi f(x) = x + 7 adalah f⁻¹(x) = ...',
+                        options: ['x - 7', '7 - x', 'x / 7', '-x - 7'],
+                        correct: 0,
+                        explanation: 'y = x + 7 -> x = y - 7, jadi f⁻¹(x) = x - 7.'
+                    },
+                    {
+                        q: 'Pusat lingkaran dengan persamaan (x - 2)² + (y + 4)² = 16 adalah...',
+                        options: ['(2, -4)', '(-2, 4)', '(2, 4)', '(-2, -4)'],
+                        correct: 0,
+                        explanation: 'Bentuk (x - a)² + (y - b)² = r² memiliki pusat (a, b) = (2, -4).'
+                    },
+                    {
+                        q: 'Bayangan titik (4, 6) akibat dilatasi dengan pusat (0, 0) dan faktor skala k = 1/2 adalah...',
+                        options: ['(2, 3)', '(8, 12)', '(4, 3)', '(2, 6)'],
+                        correct: 0,
+                        explanation: 'Dilatasi (kx, ky) = (1/2 × 4, 1/2 × 6) = (2, 3).'
+                    },
+                    {
+                        q: 'Nilai sin 150° pada kuadran II adalah...',
+                        options: ['1/2', '-1/2', '1/2 √3', '-1/2 √3'],
+                        correct: 0,
+                        explanation: 'sin 150° = sin(180° - 30°) = sin 30° = 1/2 (positif di kuadran II).'
+                    },
+                    {
+                        q: 'Jika matriks M berordo 2×3 dan matriks N berordo 3×4, maka ordo hasil perkalian M × N adalah...',
+                        options: ['2×4', '3×3', '4×2', '2×3'],
+                        correct: 0,
+                        explanation: 'Perkalian matriks (m×n) dengan (n×p) menghasilkan matriks berordo (m×p) = 2×4.'
+                    },
+                    {
+                        q: 'Nilai maksimum dari fungsi f(x) = 3 sin(x) + 2 adalah...',
+                        options: ['5', '3', '2', '1'],
+                        correct: 0,
+                        explanation: 'Nilai maksimum sin(x) adalah 1, sehingga f(x) maks = 3(1) + 2 = 5.'
+                    }
+                ],
+                ipa: [
+                    {
+                        q: 'Dalam reaksi kesetimbangan kimia, jika suhu sistem dinaikkan maka kesetimbangan akan bergeser ke arah reaksi...',
+                        options: ['Endoterm (menyerap kalor)', 'Eksoterm (melepas kalor)', 'Katalisator', 'Tidak bergeser'],
+                        correct: 0,
+                        explanation: 'Menurut Asas Le Chatelier, kenaikan suhu menggeser kesetimbangan ke arah reaksi endoterm.'
+                    },
+                    {
+                        q: 'Bagian dari sistem peredaran darah manusia yang berfungsi memompa darah kaya oksigen ke seluruh tubuh adalah...',
+                        options: ['Bilik kiri (Ventrikel sinistra)', 'Serambi kanan (Atrium dekstra)', 'Bilik kanan (Ventrikel dekstra)', 'Katup trikuspidalis'],
+                        correct: 0,
+                        explanation: 'Bilik kiri memiliki dinding otot paling tebal karena memompa darah ke seluruh tubuh melalui aorta.'
+                    },
+                    {
+                        q: 'Jika pH suatu larutan adalah 3, maka sifat larutan tersebut adalah...',
+                        options: ['Asam', 'Basa', 'Netral', 'Amfoter'],
+                        correct: 0,
+                        explanation: 'Larutan dengan pH < 7 bersifat asam, pH = 7 netral, dan pH > 7 bersifat basa.'
+                    },
+                    {
+                        q: 'Hukum I Termodinamika menyatakan hubungan antara kalor (Q), perubahan energi dalam (ΔU), dan usaha (W) sebagai...',
+                        options: ['Q = ΔU + W', 'Q = ΔU × W', 'W = Q + ΔU', 'ΔU = Q × W'],
+                        correct: 0,
+                        explanation: 'Kalor yang masuk ke sistem digunakan untuk mengubah energi dalam dan melakukan usaha (Q = ΔU + W).'
+                    },
+                    {
+                        q: 'Organ pada sistem ekskresi manusia yang menyaring darah dan menghasilkan urine adalah...',
+                        options: ['Ginjal (Nefron)', 'Hati', 'Paru-paru', 'Lambung'],
+                        correct: 0,
+                        explanation: 'Ginjal dengan unit fungsional nefron menyaring darah melalui tahap filtrasi, reabsorpsi, dan augmentasi.'
+                    },
+                    {
+                        q: 'Zat yang dapat mempercepat laju reaksi kimia tanpa ikut habis bereaksi disebut...',
+                        options: ['Katalis', 'Inhibitor', 'Reaktan', 'Endapan'],
+                        correct: 0,
+                        explanation: 'Katalis mempercepat laju reaksi dengan menurunkan energi aktivasi.'
+                    },
+                    {
+                        q: 'Sebuah gelombang memiliki frekuensi 50 Hz dan panjang gelombang 2 meter. Cepat rambat gelombang tersebut adalah...',
+                        options: ['25 m/s', '100 m/s', '52 m/s', '0,04 m/s'],
+                        correct: 1,
+                        explanation: 'v = λ × f = 2 m × 50 Hz = 100 m/s.'
+                    },
+                    {
+                        q: 'Proses pencernaan protein di dalam lambung dibantu oleh enzim...',
+                        options: ['Pepsin', 'Amilase', 'Lipase', 'Ptialin'],
+                        correct: 0,
+                        explanation: 'Enzim pepsin di lambung memecah protein menjadi pepton.'
+                    },
+                    {
+                        q: 'Menurut teori tumbukan, memperbesar luas permukaan sentuh zat padat (misalnya menggerus menjadi serbuk) akan menyebabkan laju reaksi...',
+                        options: ['Semakin cepat', 'Semakin lambat', 'Berhenti total', 'Tidak berubah'],
+                        correct: 0,
+                        explanation: 'Semakin luas permukaan sentuh, semakin sering tumbukan efektif terjadi sehingga reaksi lebih cepat.'
+                    },
+                    {
+                        q: 'Besaran Fisika yang merupakan hasil kali antara massa benda dengan kecepatannya (p = m × v) adalah...',
+                        options: ['Momentum', 'Impuls', 'Torsi', 'Tekanan'],
+                        correct: 0,
+                        explanation: 'Momentum linear didefinisikan sebagai p = m × v dengan satuan kg·m/s.'
+                    },
+                    {
+                        q: 'Sel darah putih (leukosit) dalam tubuh manusia berperan utama dalam...',
+                        options: ['Sistem pertahanan tubuh (imunitas) melawan patogen', 'Mengangkut oksigen ke jaringan', 'Proses pembekuan darah', 'Mengatur kadar gula darah'],
+                        correct: 0,
+                        explanation: 'Leukosit melawan infeksi bakteri, virus, dan benda asing dalam tubuh.'
+                    },
+                    {
+                        q: 'Peristiwa melenturnya gelombang cahaya atau gelombang air saat melewati celah sempit disebut...',
+                        options: ['Difraksi', 'Refleksi', 'Refraksi', 'Polarisasi'],
+                        correct: 0,
+                        explanation: 'Difraksi adalah pelenturan gelombang ketika melewati celah sempit atau penghalang.'
+                    },
+                    {
+                        q: 'Senyawa hidrokarbon jenuh dengan rumus umum CnH2n+2 disebut golongan...',
+                        options: ['Alkana', 'Alkena', 'Alkuna', 'Alkanol'],
+                        correct: 0,
+                        explanation: 'Alkana memiliki ikatan tunggal karbon-karbon dengan rumus umum CnH2n+2.'
+                    },
+                    {
+                        q: 'Pada alat optik mata manusia, cacat mata miopi (rabun jauh) dapat ditolong menggunakan kacamata berlensa...',
+                        options: ['Cekung (Negatif)', 'Cembung (Positif)', 'Silinder', 'Datar'],
+                        correct: 0,
+                        explanation: 'Miopi terjadi karena bayangan jatuh di depan retina sehingga perlu lensa cekung (divergen).'
+                    },
+                    {
+                        q: 'Hormon yang berfungsi menurunkan kadar gula darah dengan mengubah glukosa menjadi glikogen adalah...',
+                        options: ['Insulin', 'Adrenalin', 'Tiroksin', 'Estrogen'],
+                        correct: 0,
+                        explanation: 'Hormon insulin yang dihasilkan pankreas menurunkan kadar glukosa dalam darah.'
+                    }
+                ]
+            },
+
+            // ==========================================
+            // KELAS 12 SMA (15 Soal per Mapel = 3 Paket)
+            // ==========================================
+            'sma12': {
+                inggris: [
+                    {
+                        q: 'What is the main communicative purpose of a News Item Text?',
+                        options: ['To inform readers about newsworthy or important events of the day', 'To entertain readers with fairy tales', 'To explain how to assemble a computer', 'To describe a favorite pet'],
+                        correct: 0,
+                        explanation: 'News Item Text menyajikan informasi peristiwa terkini yang bernilai berita (newsworthy).'
+                    },
+                    {
+                        q: 'Choose the correct Conditional Sentence Type 2 (unreal present): "If I _____ enough time, I would learn Japanese."',
+                        options: ['had', 'have', 'will have', 'have had'],
+                        correct: 0,
+                        explanation: 'Conditional Type 2 menggunakan pola: If + Simple Past (had), Subject + would + V1.'
+                    },
+                    {
+                        q: 'Which part of a News Item Text provides the summary of the main event at the very beginning?',
+                        options: ['Newsworthy Event', 'Background Events', 'Sources', 'Resolution'],
+                        correct: 0,
+                        explanation: 'Newsworthy Event memuat inti peristiwa utama yang diberitakan.'
+                    },
+                    {
+                        q: 'Conditional Sentence Type 3 (regret about the past): "If she had studied harder, she _____ the scholarship."',
+                        options: ['would have gotten', 'will get', 'would get', 'got'],
+                        correct: 0,
+                        explanation: 'Conditional Type 3: If + Past Perfect, Subject + would have + V3.'
+                    },
+                    {
+                        q: 'In academic reading (UTBK/SNBT style), the question "What is the author\'s tone in the passage?" asks about...',
+                        options: ['The writer\'s attitude or feeling toward the topic', 'The number of paragraphs in the text', 'The publication year of the article', 'The spelling mistakes in the text'],
+                        correct: 0,
+                        explanation: 'Author\'s tone menunjukkan sikap atau sudut pandang emosional penulis (misalnya objective, optimistic, critical).'
+                    },
+                    {
+                        q: 'Direct: "The principal said, \'The graduation ceremony will start at 8 AM.\'"\nIndirect (Reported Speech): The principal said that the graduation ceremony _____ at 8 AM.',
+                        options: ['would start', 'will start', 'started', 'is starting'],
+                        correct: 0,
+                        explanation: 'Dalam Reported Speech dengan reporting verb lampau ("said"), "will" berubah menjadi "would".'
+                    },
+                    {
+                        q: 'Which phrase is used in a Formal Application Letter to state the position you are applying for?',
+                        options: ['I am writing to apply for the position of...', 'Hey, give me a job please!', 'What is the salary for this job?', 'I don\'t really want to work here.'],
+                        correct: 0,
+                        explanation: '"I am writing to apply for the position of..." adalah kalimat pembuka resmi surat lamaran kerja.'
+                    },
+                    {
+                        q: 'The word "inevitable" in "Climate change impacts are inevitable if no action is taken" is closest in meaning to...',
+                        options: ['unavoidable', 'impossible', 'optional', 'uncertain'],
+                        correct: 0,
+                        explanation: '"Inevitable" berarti tidak dapat dihindari (unavoidable).'
+                    },
+                    {
+                        q: 'Choose the correct relative pronoun: "The university _____ my sister graduated from is located in Yogyakarta."',
+                        options: ['which / that', 'who', 'whom', 'whose'],
+                        correct: 0,
+                        explanation: 'Untuk merujuk benda/institusi ("The university"), gunakan relative pronoun "which" atau "that".'
+                    },
+                    {
+                        q: '"Despite the heavy rain, the outdoor science fair continued smoothly." The word "Despite" can be replaced by...',
+                        options: ['In spite of', 'Because of', 'Therefore', 'Furthermore'],
+                        correct: 0,
+                        explanation: '"Despite" dan "In spite of" sama-sama berarti "meskipun" dan diikuti frasa benda.'
+                    },
+                    {
+                        q: 'What does "Sources" mean in the structure of a News Item Text?',
+                        options: ['Statements or comments from witnesses, experts, or authorities', 'The title of the newspaper', 'The advertisement page', 'The conclusion of a fictional story'],
+                        correct: 0,
+                        explanation: 'Sources berisi kutipan komentar narasumber, saksi, atau pihak berwenang terkait berita.'
+                    },
+                    {
+                        q: 'Choose the correct grammar: "Not only _____ the competition, but she also broke the school record."',
+                        options: ['did she win', 'she won', 'she did win', 'was she win'],
+                        correct: 0,
+                        explanation: 'Inversi setelah "Not only" di awal kalimat menggunakan auxiliary di depan subjek: "did she win".'
+                    },
+                    {
+                        q: 'If a passage asks for "the best title", you should look for...',
+                        options: ['The main idea that covers the whole passage', 'A minor detail in the last sentence', 'The longest word in paragraph 1', 'A person\'s name mentioned once'],
+                        correct: 0,
+                        explanation: 'Judul terbaik harus merangkum gagasan utama keseluruhan bacaan.'
+                    },
+                    {
+                        q: 'The antonym of "scarce" (langka) is...',
+                        options: ['abundant', 'rare', 'limited', 'insufficient'],
+                        correct: 0,
+                        explanation: '"Abundant" berarti melimpah, kebalikan dari "scarce" (langka).'
+                    },
+                    {
+                        q: '"She is looking forward to _____ her university acceptance letter."',
+                        options: ['receiving', 'receive', 'received', 'receives'],
+                        correct: 0,
+                        explanation: 'Frasa "look forward to" diikuti oleh gerund (V-ing) -> "receiving".'
+                    }
+                ],
+                indonesia: [
+                    {
+                        q: 'Teks yang berisi pandangan redaksi suatu media massa terhadap isu aktual dan kontroversial di masyarakat disebut...',
+                        options: ['Teks Editorial (Tajuk Rencana)', 'Teks Hikayat', 'Teks Prosedur', 'Teks Negosiasi'],
+                        correct: 0,
+                        explanation: 'Teks editorial/tajuk rencana memuat opini resmi redaksi terhadap isu aktual.'
+                    },
+                    {
+                        q: 'Karya sastra berbentuk novel yang mengambil latar peristiwa sejarah nyata dengan tokoh dan alur fiktif maupun semi-faktual disebut...',
+                        options: ['Novel Sejarah', 'Teks LHO', 'Biografi Murni', 'Resensi'],
+                        correct: 0,
+                        explanation: 'Novel sejarah memadukan fakta sejarah dengan imajinasi pengarang.'
+                    },
+                    {
+                        q: 'Kalimat yang berisi pendapat atau saran redaksi dalam Teks Editorial adalah...',
+                        options: [
+                            'Pemerintah sebaiknya memperluas akses internet ke daerah terpencil.',
+                            'Jumlah pengguna internet di Indonesia meningkat pada tahun 2024.',
+                            'Rapat paripurna dilaksanakan di gedung DPR RI pada hari Senin.',
+                            'Data BPS mencatat pertumbuhan ekonomi sebesar 5 persen.'
+                        ],
+                        correct: 0,
+                        explanation: 'Kata "sebaiknya" menandai opini/saran, bukan fakta objektif.'
+                    },
+                    {
+                        q: 'Dalam menulis Kritik Sastra dan Esai, perbedaan utama antara keduanya adalah...',
+                        options: [
+                            'Kritik fokus menilai karya sastra secara objektif, sedangkan esai membahas suatu masalah dari sudut pandang pribadi penulis',
+                            'Kritik hanya berisi puisi, esai hanya berisi angka',
+                            'Esai tidak boleh memiliki judul',
+                            'Kritik selalu memuji tanpa kekurangan'
+                        ],
+                        correct: 0,
+                        explanation: 'Kritik sastra menilai mutu karya sastra, sedangkan esai mengupas topik tertentu secara subjektif-reflektif.'
+                    },
+                    {
+                        q: 'Kalimat berikut yang efektif dan tidak boros kata (pleonasme) adalah...',
+                        options: [
+                            'Para siswa sedang berdiskusi di aula sekolah.',
+                            'Para siswa-siswa sekalian sedang berdiskusi.',
+                            'Dia naik ke atas panggung untuk berpidato.',
+                            'Mereka saling tolong-menolong satu sama lain.'
+                        ],
+                        correct: 0,
+                        explanation: '"Para siswa" sudah bermakna jamak; "naik ke atas" dan "saling ... satu sama lain" merupakan pemborosan kata.'
+                    },
+                    {
+                        q: 'Bagian Surat Lamaran Pekerjaan yang mencantumkan berkas pendukung seperti fotokopi ijazah, KTP, dan daftar riwayat hidup disebut...',
+                        options: ['Lampiran / Kelengkapan Berkas', 'Salam Pembuka', 'Alamat Tujuan', 'Tembusan'],
+                        correct: 0,
+                        explanation: 'Lampiran merinci dokumen pendukung yang disertakan pelamar.'
+                    },
+                    {
+                        q: 'Makna kata "koheren" dalam penulisan paragraf artikel ilmiah adalah...',
+                        options: ['Kepaduan makna antarkalimat sehingga membentuk satu kesatuan ide', 'Penggunaan huruf miring di setiap kalimat', 'Kalimat yang panjang dan sulit dipahami', 'Daftar pustaka di akhir tulisan'],
+                        correct: 0,
+                        explanation: 'Koherensi adalah kepaduan gagasan antarkalimat dalam sebuah paragraf.'
+                    },
+                    {
+                        q: 'Dalam Novel Sejarah, tahapan alur saat ketegangan cerita mencapai titik puncak disebut...',
+                        options: ['Klimaks (Puncak Konflik)', 'Orientasi', 'Koda', 'Abstraksi'],
+                        correct: 0,
+                        explanation: 'Klimaks adalah titik puncak ketegangan konflik dalam cerita.'
+                    },
+                    {
+                        q: 'Penulisan kata serapan yang baku dalam Bahasa Indonesia adalah...',
+                        options: ['kualitas dan sistem', 'kwalitas dan sistim', 'kwantitas dan apotik', 'tehnologi dan aktip'],
+                        correct: 0,
+                        explanation: 'Bentuk baku sesuai KBBI adalah "kualitas", "sistem", "kuantitas", "apotek", "teknologi", dan "aktif".'
+                    },
+                    {
+                        q: 'Ide pokok atau gagasan utama dalam sebuah paragraf deduktif terletak di...',
+                        options: ['Awal paragraf', 'Akhir paragraf', 'Tengah paragraf', 'Judul saja'],
+                        correct: 0,
+                        explanation: 'Paragraf deduktif memiliki kalimat utama di awal paragraf, sedangkan induktif di akhir.'
+                    },
+                    {
+                        q: 'Penulisan tempat dan tanggal surat lamaran kerja yang benar adalah...',
+                        options: ['Jakarta, 25 November 2026', 'Jakarta 25 November 2026.', 'Jakarta, 25-11-2026.', 'jakarta, 25 november 2026'],
+                        correct: 0,
+                        explanation: 'Format baku: Nama kota diawali kapital diikuti koma, tanggal angka, nama bulan kapital, tahun tanpa titik di akhir.'
+                    },
+                    {
+                        q: 'Kata "objektif" dalam penulisan artikel ilmiah memiliki arti...',
+                        options: ['Sesuai dengan keadaan yang sebenarnya tanpa dipengaruhi pendapat pribadi', 'Berdasarkan prasangka pribadi', 'Menggunakan banyak majas hiperbola', 'Memihak salah satu pihak saja'],
+                        correct: 0,
+                        explanation: 'Objektif berarti berdasarkan fakta nyata dan bebas dari bias pribadi.'
+                    },
+                    {
+                        q: 'Kalimat penutup Surat Lamaran Pekerjaan yang santun dan efektif adalah...',
+                        options: [
+                            'Demikian surat lamaran ini saya buat. Atas perhatian Bapak/Ibu, saya ucapkan terima kasih.',
+                            'Atas perhatiannya saya ucapkan banyak terima kasih sekali.',
+                            'Sekian surat ini, saya tunggu panggilannya.',
+                            'Terima kasih banyak buat Bapak/Ibu HRD.'
+                        ],
+                        correct: 0,
+                        explanation: 'Hindari kata ganti "-nya" pada "perhatiannya"; gunakan sapaan jelas "Bapak/Ibu".'
+                    },
+                    {
+                        q: 'Imbuhan meN- + kata dasar "pesona" mengalami peluluhan huruf pertama menjadi...',
+                        options: ['memesona', 'mempesona', 'mepesona', 'mengpesona'],
+                        correct: 0,
+                        explanation: 'Kata dasar berawalan konsonan K, T, S, P yang diikuti vokal luluh saat mendapat awalan meN-, sehingga menjadi "memesona".'
+                    },
+                    {
+                        q: 'Tujuan utama penulisan Artikel Opini di media massa adalah...',
+                        options: ['Mengajak pembaca memahami atau menyikapi suatu persoalan berdasarkan analisis dan data', 'Menyajikan daftar harga barang', 'Membuat cerita fiksi bersambung', 'Menulis laporan praktikum biologi'],
+                        correct: 0,
+                        explanation: 'Artikel opini memaparkan gagasan kritis penulis yang didukung argumen dan fakta.'
+                    }
+                ],
+                matematika: [
+                    {
+                        q: 'Nilai dari lim (x -> 3) (2x + 5) adalah...',
+                        options: ['8', '11', '13', '6'],
+                        correct: 1,
+                        explanation: 'Substitusi langsung x = 3: 2(3) + 5 = 6 + 5 = 11.'
+                    },
+                    {
+                        q: 'Turunan pertama dari fungsi f(x) = 3x⁴ - 2x² + 7 adalah f\'(x) = ...',
+                        options: ['12x³ - 4x', '12x⁴ - 4x²', '3x³ - 2x', '12x³ - 4x + 7'],
+                        correct: 0,
+                        explanation: 'Aturan turunan ax^n -> a·n·x^(n-1): 3·4x³ - 2·2x + 0 = 12x³ - 4x.'
+                    },
+                    {
+                        q: 'Hasil dari integral tak tentu ∫ 6x² dx adalah...',
+                        options: ['2x³ + C', '6x³ + C', '12x + C', '3x³ + C'],
+                        correct: 0,
+                        explanation: '∫ 6x² dx = (6 / 3)x³ + C = 2x³ + C.'
+                    },
+                    {
+                        q: 'Banyaknya bilangan ratusan ganjil dengan angka berbeda yang dapat disusun dari angka {1, 2, 3, 4} adalah...',
+                        options: ['12', '18', '24', '6'],
+                        correct: 0,
+                        explanation: 'Satuan ganjil ada 2 pilihan (1 atau 3). Sisa ratusan = 3 pilihan, puluhan = 2 pilihan. Total = 3 × 2 × 2 = 12.'
+                    },
+                    {
+                        q: 'Nilai dari lim (x -> 2) (x² - 4) / (x - 2) adalah...',
+                        options: ['0', '2', '4', 'Tak hingga'],
+                        correct: 2,
+                        explanation: 'Faktorkan: (x - 2)(x + 2) / (x - 2) = x + 2. Saat x -> 2, nilainya 2 + 2 = 4.'
+                    },
+                    {
+                        q: 'Nilai dari 5! (5 faktorial) adalah...',
+                        options: ['25', '60', '120', '720'],
+                        correct: 2,
+                        explanation: '5! = 5 × 4 × 3 × 2 × 1 = 120.'
+                    },
+                    {
+                        q: 'Banyaknya cara memilih 2 siswa dari 5 kandidat untuk menjadi perwakilan lomba (tanpa memperhatikan urutan) adalah...',
+                        options: ['10', '20', '25', '5'],
+                        correct: 0,
+                        explanation: 'Kombinasi C(5, 2) = 5! / (2! × 3!) = (5 × 4) / 2 = 10.'
+                    },
+                    {
+                        q: 'Jika kubus ABCD.EFGH memiliki panjang rusuk 6 cm, maka panjang diagonal ruang AG adalah...',
+                        options: ['6√2 cm', '6√3 cm', '12 cm', '18 cm'],
+                        correct: 1,
+                        explanation: 'Panjang diagonal ruang kubus dengan rusuk s adalah s√3 = 6√3 cm.'
+                    },
+                    {
+                        q: 'Nilai rata-rata (mean) dari data: 6, 8, 7, 9, 10 adalah...',
+                        options: ['7', '8', '8,5', '9'],
+                        correct: 1,
+                        explanation: 'Mean = (6 + 8 + 7 + 9 + 10) / 5 = 40 / 5 = 8.'
+                    },
+                    {
+                        q: 'Gradien garis singgung kurva y = x² + 3x di titik dengan absis x = 2 adalah...',
+                        options: ['5', '7', '10', '4'],
+                        correct: 1,
+                        explanation: 'm = y\' = 2x + 3. Untuk x = 2, m = 2(2) + 3 = 7.'
+                    },
+                    {
+                        q: 'Nilai integral tentu ∫₀² 2x dx adalah...',
+                        options: ['2', '4', '6', '8'],
+                        correct: 1,
+                        explanation: 'Antiturunan 2x adalah x². Maka [x²]₀² = 2² - 0² = 4.'
+                    },
+                    {
+                        q: 'Dari seperangkat kartu remi (52 kartu), peluang terambilnya kartu As adalah...',
+                        options: ['1/13', '1/52', '1/4', '4/13'],
+                        correct: 0,
+                        explanation: 'Ada 4 kartu As dari 52 kartu, sehingga peluangnya 4/52 = 1/13.'
+                    },
+                    {
+                        q: 'Median dari data terurut: 4, 5, 6, 7, 8, 9, 10 adalah...',
+                        options: ['6', '7', '8', '7,5'],
+                        correct: 1,
+                        explanation: 'Data berjumlah 7 (ganjil), nilai tengahnya adalah data ke-4 yaitu 7.'
+                    },
+                    {
+                        q: 'Nilai dari lim (x -> ∞) (4x² + 3x) / (2x² - 1) adalah...',
+                        options: ['0', '2', '4', '∞'],
+                        correct: 1,
+                        explanation: 'Karena pangkat tertinggi pembilang dan penyebut sama (x²), limitnya = koefisien 4 / 2 = 2.'
+                    },
+                    {
+                        q: 'Turunan pertama dari f(x) = sin(2x) adalah f\'(x) = ...',
+                        options: ['2 cos(2x)', 'cos(2x)', '-2 cos(2x)', '2 sin(2x)'],
+                        correct: 0,
+                        explanation: 'Dengan aturan rantai, turunan sin(u) adalah u\' cos(u) = 2 cos(2x).'
+                    }
+                ],
+                ipa: [
+                    {
+                        q: 'Hukum Faraday tentang induksi elektromagnetik menyatakan bahwa GGL induksi sebanding dengan laju perubahan...',
+                        options: ['Fluks magnetik', 'Hambatan listrik', 'Massa jenis kawat', 'Suhu ruangan'],
+                        correct: 0,
+                        explanation: 'GGL induksi timbul akibat perubahan fluks magnetik terhadap waktu.'
+                    },
+                    {
+                        q: 'Dalam reaksi redoks, peristiwa pelepasan elektron atau kenaikan bilangan oksidasi disebut...',
+                        options: ['Oksidasi', 'Reduksi', 'Netralisasi', 'Sublimasi'],
+                        correct: 0,
+                        explanation: 'Oksidasi ditandai dengan kenaikan biloks (pelepasan elektron), sedangkan reduksi penurunan biloks.'
+                    },
+                    {
+                        q: 'Basa nitrogen yang hanya terdapat pada molekul DNA (dan tidak ada pada RNA) adalah...',
+                        options: ['Timin (T)', 'Urasil (U)', 'Adenin (A)', 'Guanin (G)'],
+                        correct: 0,
+                        explanation: 'DNA memiliki basa A, T, G, C; sedangkan RNA memiliki A, U (Urasil), G, C.'
+                    },
+                    {
+                        q: 'Tiga buah resistor masing-masing 4 Ω, 6 Ω, dan 10 Ω dirangkai secara seri. Hambatan penggantinya adalah...',
+                        options: ['20 Ω', '10 Ω', '2 Ω', '240 Ω'],
+                        correct: 0,
+                        explanation: 'Pada rangkaian seri, R_total = R1 + R2 + R3 = 4 + 6 + 10 = 20 Ω.'
+                    },
+                    {
+                        q: 'Proses pembelahan sel yang menghasilkan 4 sel anakan dengan jumlah kromosom setengah dari induknya (haploid) untuk pembentukan gamet disebut...',
+                        options: ['Meiosis', 'Mitosis', 'Amitosis', 'Fagositosis'],
+                        correct: 0,
+                        explanation: 'Meiosis terjadi pada sel kelamin dan menghasilkan 4 sel anakan haploid (n).'
+                    },
+                    {
+                        q: 'Sifat koligatif larutan bergantung pada...',
+                        options: ['Jumlah partikel zat terlarut dalam larutan', 'Warna zat pelarut', 'Bentuk wadah gelas kimia', 'Bau zat terlarut'],
+                        correct: 0,
+                        explanation: 'Sifat koligatif (penurunan titik beku, kenaikan titik didih, tekanan osmotik) hanya bergantung pada jumlah partikel zat terlarut.'
+                    },
+                    {
+                        q: 'Jika dua muatan listrik sejenis (positif dan positif) didekatkan, maka gaya Coulomb yang terjadi adalah...',
+                        options: ['Tolak-menolak', 'Tarik-menarik', 'Saling menghilangkan', 'Berputar melingkar'],
+                        correct: 0,
+                        explanation: 'Muatan sejenis saling tolak-menolak, sedangkan muatan berlawanan jenis saling tarik-menarik.'
+                    },
+                    {
+                        q: 'Tahap pertama respirasi seluler aerob yang mengubah glukosa menjadi asam piruvat di sitoplasma adalah...',
+                        options: ['Glikolisis', 'Siklus Krebs', 'Transpor Elektron', 'Fotolisis Air'],
+                        correct: 0,
+                        explanation: 'Glikolisis berlangsung di sitoplasma dan menghasilkan 2 asam piruvat, 2 ATP, dan 2 NADH.'
+                    },
+                    {
+                        q: 'Sel elektrokimia yang mengubah energi kimia dari reaksi redoks spontan menjadi energi listrik (seperti baterai) adalah sel...',
+                        options: ['Volta / Galvani', 'Elektrolisis', 'Surya fotovoltaik', 'Transformator'],
+                        correct: 0,
+                        explanation: 'Sel Volta menghasilkan listrik dari reaksi kimia spontan, sedangkan sel elektrolisis memakai listrik untuk memicu reaksi.'
+                    },
+                    {
+                        q: 'Pada persilangan monohibrid dominan penuh (Aa × Aa), perbandingan fenotipe keturunannya adalah...',
+                        options: ['3 : 1', '1 : 2 : 1', '9 : 3 : 3 : 1', '1 : 1'],
+                        correct: 0,
+                        explanation: 'Pada dominan penuh, AA dan Aa berfenotipe dominan (3), sedangkan aa resesif (1) -> rasio fenotipe 3 : 1.'
+                    },
+                    {
+                        q: 'Alat listrik yang berfungsi menaikkan atau menurunkan tegangan arus bolak-balik (AC) adalah...',
+                        options: ['Transformator (Trafo)', 'Kapasitor', 'Diode', 'Resistor'],
+                        correct: 0,
+                        explanation: 'Transformator step-up menaikkan tegangan AC, sedangkan step-down menurunkannya.'
+                    },
+                    {
+                        q: 'Kumpulan gen yang dibawa oleh individu yang menentukan sifat tertentu (misalnya AA, Aa, atau aa) disebut...',
+                        options: ['Genotipe', 'Fenotipe', 'Mutasi', 'Kariotipe'],
+                        correct: 0,
+                        explanation: 'Genotipe adalah susunan genetik, sedangkan fenotipe adalah sifat yang tampak.'
+                    },
+                    {
+                        q: 'Dalam gelombang elektromagnetik, urutan spektrum yang memiliki frekuensi paling tinggi dan daya tembus sangat kuat adalah...',
+                        options: ['Sinar Gamma', 'Gelombang Radio', 'Inframerah', 'Cahaya Tampak'],
+                        correct: 0,
+                        explanation: 'Sinar gamma memiliki frekuensi dan energi foton tertinggi dalam spektrum gelombang elektromagnetik.'
+                    },
+                    {
+                        q: 'Penambahan garam pada es batu saat membuat es putar bertujuan untuk...',
+                        options: ['Menurunkan titik beku campuran es', 'Menaikkan titik didih es', 'Menambah rasa manis es', 'Mengubah es menjadi uap'],
+                        correct: 0,
+                        explanation: 'Penurunan titik beku (sifat koligatif) membuat suhu campuran es menjadi di bawah 0°C.'
+                    },
+                    {
+                        q: 'Teknologi bioteknologi modern yang menggabungkan DNA dari dua organisme berbeda untuk menghasilkan hormon insulin adalah...',
+                        options: ['Rekayasa genetika (DNA rekombinan)', 'Fermentasi tradisional', 'Kultur jaringan sederhana', 'Stek batang'],
+                        correct: 0,
+                        explanation: 'Teknik DNA rekombinan menyisipkan gen penghasil insulin manusia ke plasmid bakteri E. coli.'
+                    }
+                ]
             }
         };
 
@@ -3528,6 +4712,7 @@
 
             renderGradeSelector() {
                 const smpContainer = document.getElementById('smpGradeButtons');
+                const smaContainer = document.getElementById('smaGradeButtons');
                 const smkContainer = document.getElementById('smkGradeButtons');
 
                 const renderBtn = (gObj) => {
@@ -3552,6 +4737,20 @@
                                 }">${doneCount}/4 Mapel</span>
                             </button>
                         `;
+                    } else if (gObj.level === 'SMA') {
+                        return `
+                            <button onclick="app.selectGrade('${gObj.grade}')" class="grade-btn rounded-2xl p-2.5 text-center border-2 transition-all flex flex-col items-center justify-center ${
+                                isActive
+                                    ? 'bg-gradient-to-b from-emerald-500 to-emerald-700 text-white border-emerald-900 shadow-md scale-[1.03]'
+                                    : 'bg-white text-slate-700 border-emerald-200 hover:border-emerald-400'
+                            }">
+                                <span class="text-[10px] font-extrabold uppercase tracking-wider ${isActive ? 'text-emerald-100' : 'text-emerald-600'}">SMA</span>
+                                <span class="font-display font-bold text-base sm:text-lg leading-tight">${gObj.label}</span>
+                                <span class="text-[10px] mt-0.5 px-2 py-0.5 rounded-full font-bold ${
+                                    isActive ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-500'
+                                }">${doneCount}/4 Mapel</span>
+                            </button>
+                        `;
                     } else {
                         return `
                             <button onclick="app.selectGrade('${gObj.grade}')" class="grade-btn rounded-2xl p-2.5 text-center border-2 transition-all flex flex-col items-center justify-center ${
@@ -3570,6 +4769,7 @@
                 };
 
                 smpContainer.innerHTML = GRADES_CONFIG.filter(g => g.level === 'SMP').map(renderBtn).join('');
+                smaContainer.innerHTML = GRADES_CONFIG.filter(g => g.level === 'SMA').map(renderBtn).join('');
                 smkContainer.innerHTML = GRADES_CONFIG.filter(g => g.level === 'SMK').map(renderBtn).join('');
 
                 const meta = this.getCurrentGradeMeta();
@@ -3642,7 +4842,8 @@
                 document.getElementById('headerTotalStars').textContent = `${gradeStars}/12`;
                 document.getElementById('headerTotalScore').textContent = `${gradeScore} Poin`;
                 document.getElementById('completedSubjectsStatus').textContent = `${gradeCompleted}/4 Mapel (${meta.label})`;
-                document.getElementById('allGradesCompletedText').textContent = `Total seluruh kelas (7–12): ${totalCompletedAllGrades}/24 kuis selesai`;
+                const totalQuizzesAllGrades = GRADES_CONFIG.length * 4;
+                document.getElementById('allGradesCompletedText').textContent = `Total seluruh kelas (7–12): ${totalCompletedAllGrades}/${totalQuizzesAllGrades} kuis selesai`;
             },
 
             renderSubjectCards() {
@@ -4060,6 +5261,42 @@
                     console.warn('Service worker registration failed:', err);
                 });
             });
+        }
+
+        // PWA Install / Download App Handler
+        let deferredInstallPrompt = null;
+        const installAppBtn = document.getElementById('installAppBtn');
+
+        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+            if (installAppBtn) installAppBtn.classList.add('hidden');
+        }
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredInstallPrompt = e;
+            if (installAppBtn) installAppBtn.classList.remove('hidden');
+        });
+
+        window.addEventListener('appinstalled', () => {
+            deferredInstallPrompt = null;
+            if (installAppBtn) installAppBtn.classList.add('hidden');
+        });
+
+        async function installPWA() {
+            if (deferredInstallPrompt) {
+                deferredInstallPrompt.prompt();
+                const { outcome } = await deferredInstallPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    deferredInstallPrompt = null;
+                    if (installAppBtn) installAppBtn.classList.add('hidden');
+                }
+                return;
+            }
+            app.showModal(
+                'Cara Install Aplikasi QUIZORA',
+                'Buka http://localhost:8080/ (atau link HTTPS) di Chrome/Edge/Safari, lalu klik ikon Install (⊕) di address bar kanan atau pilih menu "Tambahkan ke Layar Utama / Install App".',
+                () => app.closeModal()
+            );
         }
     </script>
 </body>
